@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<div class="row">
+    <div class="offset-md-2 col-md-8 text-center">
+        <h3>
+            List of Movies to be reviewed in 2022
+        </h3>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-sm btn-outline-primary" href="/movies/movie/new">+ Add</a>
+    </div>
+</div>
+<div class="movies-list">
+
+    <div class="row">
+        <% for(var i = 0; i < movies.length; i++) {%>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card mb-2">
+                    <div>
+                        <img src="<%- movies[i].poster_img%>" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="/movies/<%- movies[i].id%>"><%- movies[i].title%></a>
+                        </h5>
+                        <p class="card-text"><%- movies[i].actor%></p>
+                        <p class="card-text"><small class="text-muted"><%- movies[i].time%></small></p>
+                    </div>
+                    <div class="p-1 text-end">
+                        <form method="post" action="/movies/deleteMovie/<%- movies[i].id%>">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>
